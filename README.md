@@ -26,7 +26,7 @@ As an application of facial recognition, I dealt with the problem of designing a
 
 # 2.1) Finding the Data
 For the application I developed, I needed photos labeled in terms of age, gender and race. The best dataset I could find for this was the UTKFace dataset. I used it.
- 
+You can find the dataset in this link : https://www.kaggle.com/jangedoo/utkface-new
   
 # 2.2) Face Detection
 
@@ -67,7 +67,7 @@ I used oafy library and opencv methods to play video with youtube url. I used op
 7.PİCKLE
 
 # Sources : 
-1)https://www.sushanththarigopula.com/real-time-facial-recognition
+1) https://www.sushanththarigopula.com/real-time-facial-recognition
 2) https://towardsdatascience.com/predict-age-and-gender-using-convolutional-neural-network-and-opencv-fd90390e3ce6
 3) https://www.youtube.com/watch?v=GT2UeN85BdA&t=32s
 4) https://github.com/aakashjhawar/face-recognition-using-opencv
