@@ -43,7 +43,7 @@ I used SVM classifier for race prediction, same as gender.
  
 # 2.5) Estimating from video and photo
 
-I used oafy library and opencv methods to play video with youtube url. I used opencv library's methods for photo estimation.
+I used pafy library and opencv methods to play video with youtube url. I used opencv library's methods for photo estimation.
 
 # 3) SCREENS FROM APP
 
@@ -59,11 +59,17 @@ I used oafy library and opencv methods to play video with youtube url. I used op
 # Used Libraries : 
 
 1.OPENCV
+
 2.NUMPY
+
 3.PANDAS
+
 4.FACE_RECOGNİTİON
+
 5.PAFY
+
 6.SKLEARN
+
 7.PİCKLE
 
 # Sources : 
