@@ -1,3 +1,96 @@
+TR
+
+# Age, Gender and Race Detection (Yaş, Cinsiyet ve Irk Tespiti)
+
+Bu proje, fotoğraflardan veya YouTube videolarından insan yüzlerini algılayarak **yaş, cinsiyet ve ırk** tahmininde bulunan Python tabanlı bir yapay zeka uygulamasıdır.
+
+## 🎯 Proje Hakkında
+
+Uygulama, verilen bir görsel girdi (resim dosyası veya YouTube video linki) üzerinde şu işlemleri gerçekleştirir:
+
+1. Yüzleri tespit eder.
+2. Tespit edilen yüzlerden öznitelik çıkarımı yapar.
+3. Eğitilmiş Makine Öğrenmesi (SVM) ve Derin Öğrenme (Caffe) modellerini kullanarak kişinin demografik özelliklerini tahmin eder.
+
+## 🚀 Özellikler
+
+* **Çoklu Girdi Desteği:** Bilgisayarınızdaki bir fotoğrafı veya bir YouTube video bağlantısını analiz edebilir.
+* **Karma Model Yapısı:**
+* **Yaş:** Önceden eğitilmiş Caffe modeli (`age_net`).
+* **Cinsiyet:** SVM Sınıflandırıcısı (Daha yüksek doğruluk için Caffe yerine tercih edilmiştir).
+* **Irk:** UTKFace veri seti ile eğitilmiş SVM Sınıflandırıcısı.
+
+
+* **Yüz Tespiti:** `face_recognition` kütüphanesi kullanılarak yüksek doğruluklu yüz bulma.
+
+## 🛠 Kurulum ve Gereksinimler
+
+Projenin çalışması için aşağıdaki Python kütüphanelerinin yüklü olması gerekmektedir.
+
+### Gerekli Kütüphaneler
+
+* OpenCV (`cv2`)
+* NumPy
+* Pandas
+* face_recognition
+* Pafy (YouTube videoları için)
+* Scikit-learn (`sklearn`)
+* Pickle
+
+### Kurulum Adımları
+
+1. **Depoyu Klonlayın:**
+```bash
+git clone https://github.com/anenthusiastic/age-gender-race-detection.git
+cd age-gender-race-detection
+
+```
+
+
+2. **Bağımlılıkları Yükleyin:**
+```bash
+pip install opencv-python numpy pandas face-recognition pafy scikit-learn youtube-dl
+
+```
+
+
+*(Not: `pafy` ve `youtube-dl` sürümleri YouTube API değişikliklerine göre güncel olmalıdır.)*
+3. **Model Dosyalarını İndirin:**
+Proje, Caffe modellerine ihtiyaç duyar (`age_net.caffemodel`, `gender_net.caffemodel`). Bu dosyaları [bu bağlantıdan](https://talhassner.github.io/home/publication/2015_CVPR) indirip proje dizinine eklemeniz gerekebilir.
+
+## 💻 Kullanım
+
+Uygulamanın ana dosyası `yz_proje2.py`'dir.
+
+1. **Modeli Eğitin (İlk Çalıştırma):**
+Irk ve cinsiyet tahmini için kullanılan SVM modelinin ağırlıklarını oluşturmak adına, kod içerisindeki `ML_Classifier` fonksiyonunu bir kez çalıştırmanız gerekir. Bu işlem `pickle` dosyalarını oluşturacaktır.
+2. **Uygulamayı Başlatın:**
+```bash
+python yz_proje2.py
+
+```
+
+
+3. **Girdi Seçimi:**
+Program başladığında size soracaktır:
+* **YouTube Videosu:** Bir YouTube linki girin.
+* **Fotoğraf:** Bilgisayarınızdaki fotoğrafın dosya yolunu girin.
+
+
+
+## 🧠 Nasıl Çalışır? (Teknik Detaylar)
+
+1. **Veri Seti:** Irk tahmini modelini eğitmek için [UTKFace](https://www.kaggle.com/jangedoo/utkface-new) veri seti kullanılmıştır.
+2. **Yüz Algılama:** Başlangıçta Haar Cascade denenmiş ancak başarısız olduğu için `face_recognition` kütüphanesine (HOG/CNN tabanlı) geçilmiştir.
+3. **Öznitelik Çıkarımı:** Yüzlerin sayısal temsili (embedding) için `openface.nn4.small2.v1` modeli kullanılmıştır.
+4. **Sınıflandırma:**
+* Yaş tahmini için hazır CNN modeli kullanılmıştır.
+* Cinsiyet ve Irk için öznitelikler çıkarıldıktan sonra SVM (Support Vector Machine) ile sınıflandırma yapılmıştır.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+EN
+
 # age-gender-race-detection
 
 I have created this project for my AI course.
@@ -80,3 +173,8 @@ I used pafy library and opencv methods to play video with youtube url. I used op
 5) https://www.pyimagesearch.com/2018/09/24/opencv-face-recognition/
 6) https://www.kaggle.com/yhuan95/face-recognition-with-facenet
 7) https://github.com/davidsandberg/facenet
+
+
+## 📝 Lisans
+
+Bu proje eğitim amaçlı geliştirilmiştir. Kullanılan veri setleri ve kütüphanelerin kendi lisans koşulları geçerlidir.
